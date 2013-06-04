@@ -2,7 +2,7 @@
 
 This project is a simple set of starting files to get a Phaser game started using the WebStorm IDE for TypeScript editing, and Chrome DevTools for live debugging of TypeScript via sourcemaps.
 
-See the tutorial on [my website]() to get started.
+See the tutorial on [my website](http://ericterpstra.com/2013/06/phaser-starter-project-for-webstorm-and-chrome-modular-typescript-code-completion-and-live-debugging/) to get started.
 
 
 ### Notable Features
