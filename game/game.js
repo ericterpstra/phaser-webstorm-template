@@ -4,6 +4,7 @@ define(["require", "exports", './objects/Player'], function(require, exports, __
     (function () {
         var myGame = new Phaser.Game(this, 'game', 400, 400, init, create, update, render);
         var myPlayer;
+        var shake;
         var x = 1;
         function init() {
             myGame.stage.scaleMode = Phaser.StageScaleMode.NO_SCALE;
@@ -12,8 +13,12 @@ define(["require", "exports", './objects/Player'], function(require, exports, __
         }
         function create() {
             myPlayer = new Game.Player(myGame, 100, 100, 'jet');
+            shake = myGame.camera.fx.add(Phaser.FX.Camera.Shake);
         }
         function update() {
+            if(myGame.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+                shake.start(0.07, 1);
+            }
         }
         function render() {
             var g = (Math.sin(x) * 128 + 127) | 0;

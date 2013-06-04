@@ -1,5 +1,6 @@
 // Add a reference to the Phaser library interface so WebStorm knows about it
 /// <reference path="../lib/phaser.d.ts" />
+/// <reference path="../lib/phaser-fx.d.ts" />
 
 // Add references for other classes added to the game to enable code completion, etc...
 /// <reference path="objects/Player.ts" />
@@ -12,7 +13,9 @@ import Game = module('./objects/Player');
 
     // Create game instance and connect init, create, update and render methods
     var myGame: Phaser.Game = new Phaser.Game(this, 'game', 400, 400, init, create, update, render);
+
     var myPlayer:Game.Player;
+    var shake: Phaser.FX.Camera.Shake;
     var x = 1;
 
     // The first function called when the framework is initialized.
@@ -28,10 +31,14 @@ import Game = module('./objects/Player');
     function create() {
       // Create All the Things!
       myPlayer = new Game.Player(myGame, 100, 100, 'jet');
+      shake = <Phaser.FX.Camera.Shake> myGame.camera.fx.add(Phaser.FX.Camera.Shake);
     }
 
     // Update is called every 'tick'
     function update() {
+      if( myGame.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) ) {
+        shake.start(0.07, 1);
+      }
     }
 
     // A callback for the game's render event.
